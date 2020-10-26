@@ -1,0 +1,5 @@
+<%- include('_header') %>
+
+  <h1><%= title != null ? title.split('-').join(' ') : '' %></h1>
+  <pre><%= JSON.stringify(builds, null, 2) %></pre>
+<%- include('_footer') %>

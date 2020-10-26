@@ -1,0 +1,21 @@
+{
+  "name": "appcenter-builds",
+  "version": "1.0.0",
+  "description": "This project works as a proxy for downloading builds produced on appcenter.ms without giving access to other areas (on appcenter) like Analytics, Diagnostics, Distribution etc.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
+  },
+  "author": "Dimitris - Sotiris Tsolis <dimitristls@gmail.com>",
+  "repository": "https://github.com/dtsolis/appcenter-builds.git",
+  "license": "MIT"
+}

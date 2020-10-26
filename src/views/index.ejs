@@ -1,0 +1,36 @@
+<%- include('_header') %>
+
+  <h1>Applications</h1>
+
+  <% results.forEach(function(app, index) { %>
+    <div class="app-row">
+      <img src="<%= app.icon_url %>" />
+      <div class="column">
+        <span class="app-title"><%= app.display_name.split('-').join(' ') %><%= app.release_type != null && app.release_type !== '' ? ` | ${app.release_type}` : '' %></span>
+        <span class="app-subtitle">
+          <%= app.os %> | Latest build: 
+          <% if (app.latestSuccessfulBuild != null) { %>
+            <%= new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: '2-digit'}).format(new Date(app.latestSuccessfulBuild.finishTime)) %>
+            - id: <%= app.latestSuccessfulBuild.id %>
+          <% } else { %>
+            -
+          <% } %>
+
+
+        </span>
+        <!-- <%= JSON.stringify(app.download_uris) %> -->
+      </div>
+      <% if (app.latestSuccessfulBuild != null) { %>
+        <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master/builds/<%= app.latestSuccessfulBuild.id %>" class="button">
+          Get build
+        </a>
+        <% if (app.os === 'Android') { %>
+          <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master/builds/<%= app.latestSuccessfulBuild.id %>?type=bundle" class="button">
+            Get bundle
+          </a>
+        <% } %>
+      <% } %>
+    </div>
+  <% }) %>
+            
+<%- include('_footer') %>
