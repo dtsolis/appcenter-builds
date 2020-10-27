@@ -11,12 +11,18 @@
       font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,Ubuntu,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
       max-width: 850px;
       margin: auto;
+      background-color: #f5f5f5;
     }
     a {
       color: inherit; /* blue colors for links too */
       text-decoration: inherit; /* no underline */
     }
-    .app-row {
+    a.clickable-row {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+    }
+    .row {
       display: flex;
       align-items: center;
       flex-direction: row;
@@ -24,11 +30,14 @@
       padding-right: 10px;
       padding-top: 20px;
       padding-bottom: 20px;
+      background-color: #fff;
+      margin-bottom: 2px;
+      border-radius: 4px;
     }
-    .app-row:hover {
+    .row:hover {
       background-color: #eee;
     }
-    .app-row img {
+    .row img {
       width: 50px;
       height: 50px;
       border-radius: 8px;
@@ -39,13 +48,13 @@
       flex-direction: column;
       flex-grow: 1;
     }
-    .app-title {
+    .row-title {
       font-weight: 600;
       font-size: 14px;
       line-height: 20px;
       display: inline-block;
     }
-    .app-subtitle {
+    .row-subtitle {
       font-size: 12px;
       color: #999;
     }
@@ -57,6 +66,19 @@
     }
     .button:hover {
       background-color: #00599f;
+    }
+    .nav-header {
+      margin-bottom: 21px;
+    }
+    .nav-header h1 {
+      margin-bottom: 0;
+    }
+    .nav-header a {
+      color: #006fc8;
+    }
+    .nav-header a:hover {
+      color: #00599f;
+      text-decoration: underline;
     }
     </style>
 </head>

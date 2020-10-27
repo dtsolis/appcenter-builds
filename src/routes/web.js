@@ -56,7 +56,7 @@ router.get('/:owner_type/:owner/apps/:app/build/branches/:branch', function (req
   AppCenterApi.getAppBuilds(req.params.owner, req.params.app, req.params.branch)
     .then(builds => {
       return res.render('builds', {
-        title: `${req.params.app} | Builds | ${req.params.branch}`,
+        title: `${req.params.app} | Builds`,
         builds: builds.filter(tmp => tmp.result === 'succeeded'),
         params: req.params,
       });
@@ -65,7 +65,7 @@ router.get('/:owner_type/:owner/apps/:app/build/branches/:branch', function (req
       console.log(error);
       if (error.statusCode === 404) {
         return res.render('builds', {
-          title: `${req.params.app} | Builds | ${req.params.branch}`,
+          title: `${req.params.app} | Builds`,
           builds: [],
           params: req.params,
         });
