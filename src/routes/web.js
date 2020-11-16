@@ -6,12 +6,12 @@ const AppCenterApi = require('../appcenter/api');
 
 // GET /
 router.get('/', function (req, res, next) {
-  console.log(req.session);
+  const branch = req.query.branch || 'master';
   AppCenterApi.getApps()
     .then(apps => {
       const promises = [];
       apps.forEach(a => {
-        const latestBuildPromise = AppCenterApi.getAppBuilds(a.owner.name, a.name)
+        const latestBuildPromise = AppCenterApi.getAppBuilds(a.owner.name, a.name, branch)
           .then(builds => {
             const succeededBuilds = builds.filter(b => b.result === 'succeeded');
             return {
