@@ -20,7 +20,7 @@ const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
 const webRoutes = require('./routes/web');
-app.use('/', middlewares.requiresLogin, webRoutes);
+app.use('/', middlewares.requiresLogin, middlewares.configureAppCenterApi, webRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

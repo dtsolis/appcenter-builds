@@ -1,8 +1,14 @@
 const request = require('request-promise');
 const config = require('../config');
 
+let _appcenterToken = config.appcenterToken;
+
+const setAppCenterToken = (token) => {
+  _appcenterToken = token;
+}
+
 const _request = (endpoint, method, data) => {
-  if (!config.appcenterToken) {
+  if (!_appcenterToken) {
     return Promise.reject('Environment variable "APP_CENTER_TOKEN" has not been specified. Ignore.');
   }
 
@@ -10,7 +16,7 @@ const _request = (endpoint, method, data) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'X-API-Token': config.appcenterToken,
+      'X-API-Token': _appcenterToken,
     },
     method,
     uri: `https://api.appcenter.ms/v0.1/${endpoint}`,
@@ -54,6 +60,7 @@ const getDownloadInfoForBuild = (owner, app, build_id, download_type) => {
 }
 
 module.exports = {
+  setAppCenterToken,
   getApps,
   getAppBranches,
   getAppBuilds,

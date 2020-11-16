@@ -1,4 +1,5 @@
 const config = require('../config/index');
+const AppCenterApi = require('../appcenter/api');
 
 function _promptBasicAuthDialog(res) {
   res.statusCode = 401;
@@ -51,6 +52,14 @@ function requiresLogin(req, res, next) {
   }
 }
 
-
+function configureAppCenterApi(req, res, next) {
+  if (req.user && req.user.appcenterToken != null) {
+    AppCenterApi.setAppCenterToken(req.user.appcenterToken);
+  } else {
+    AppCenterApi.setAppCenterToken(config.appcenterToken);
+  } 
+  return next();
+}
 
 module.exports.requiresLogin = requiresLogin;
+module.exports.configureAppCenterApi = configureAppCenterApi;
