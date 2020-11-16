@@ -35,7 +35,7 @@
           <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master/builds/<%= app.latestSuccessfulBuild.id %>" class="button">
             Get build
           </a>
-          <% if (app.os === 'Android') { %>
+          <% if (app.latestSuccessfulBuild.tags.includes('android-app-bundle')) { %>
             <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master/builds/<%= app.latestSuccessfulBuild.id %>?type=bundle" class="button">
               Get bundle
             </a>
