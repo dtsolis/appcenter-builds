@@ -13,7 +13,7 @@
 
   <div class="nav-header">
     <h1><%= title != null ? title.split('-').join(' ') : '' %></h1>
-    <a href="/">Home</a>
+    <a href="/?branch=<%= params.branch %>">Home</a>
   </div>
 
   <% builds.forEach(function(build, index) { %>
