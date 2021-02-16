@@ -14,7 +14,7 @@
   <h1>Applications</h1>
 
   <% results.forEach(function(app, index) { %>
-    <a class="clickable-row" href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master">
+    <a class="clickable-row" href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/<%= branch %>">
       <div class="row">
         <img src="<%= app.icon_url %>" />
         <div class="column">
@@ -32,11 +32,11 @@
           <!-- <%= JSON.stringify(app.download_uris) %> -->
         </div>
         <% if (app.latestSuccessfulBuild != null) { %>
-          <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master/builds/<%= app.latestSuccessfulBuild.id %>" class="button">
+          <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/<%= branch %>/builds/<%= app.latestSuccessfulBuild.id %>" class="button">
             Get build
           </a>
           <% if (app.latestSuccessfulBuild.tags.includes('android-app-bundle')) { %>
-            <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/master/builds/<%= app.latestSuccessfulBuild.id %>?type=bundle" class="button">
+            <a href="/<%= app.owner.type %>/<%= app.owner.name %>/apps/<%= app.name %>/build/branches/<%= branch %>/builds/<%= app.latestSuccessfulBuild.id %>?type=bundle" class="button">
               Get bundle
             </a>
           <% } %>

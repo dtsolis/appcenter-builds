@@ -31,7 +31,11 @@ router.get('/', function (req, res, next) {
       return Promise.all(promises);
     })
     .then(results => {
-      return res.render('index', { title: "AppCenter Builds", results });
+      return res.render('index', {
+        title: "AppCenter Builds",
+        results,
+        branch,
+      });
     })
     .catch(error => {
       return next(error);

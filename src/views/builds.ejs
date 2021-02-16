@@ -27,11 +27,11 @@
         </span>
       </div>
       <% if (build != null) { %>
-        <a href="/<%= params.owner_type %>/<%= params.owner %>/apps/<%= params.app %>/build/branches/master/builds/<%= build.id %>" class="button">
+        <a href="/<%= params.owner_type %>/<%= params.owner %>/apps/<%= params.app %>/build/branches/<%= build.sourceBranch %>/builds/<%= build.id %>" class="button">
           Get build
         </a>
         <% if (build.tags.includes('android-app-bundle')) { %>
-          <a href="/<%= params.owner_type %>/<%= params.owner %>/apps/<%= params.app %>/build/branches/master/builds/<%= build.id %>?type=bundle" class="button">
+          <a href="/<%= params.owner_type %>/<%= params.owner %>/apps/<%= params.app %>/build/branches/<%= build.sourceBranch %>/builds/<%= build.id %>?type=bundle" class="button">
             Get bundle
           </a>
         <% } %>
